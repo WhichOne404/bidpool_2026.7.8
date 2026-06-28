@@ -1,0 +1,455 @@
+/**
+ * Light Blue Theme Design System - Light Mode
+ * Clean, modern light theme
+ */
+
+/* Color System */
+$lb-primary: #3979F6;
+$lb-success: #47822B;
+$lb-warning: #da9734;
+$lb-danger: #c93c3c;
+$lb-info: #3979F6;
+$lb-teal: #6291e3;
+
+// Color aliases for backwards compatibility
+$lb-blue: #3979F6;
+$lb-green: #47822B;
+$lb-orange: #da9734;
+$lb-red: #c93c3c;
+$lb-purple: #a700ae;
+
+$lb-bg-page: #f5f7fa;
+$lb-bg-widget: #ffffff;
+$lb-bg-sidebar: #ffffff;
+
+$lb-text-primary: #1a1a2e;
+$lb-text-secondary: #4a4a6a;
+$lb-text-muted: #8a8aa3;
+
+$lb-border: #e8e8ef;
+$lb-border-light: #f0f0f5;
+
+$lb-widget-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+$lb-widget-radius: 12px;
+
+$lb-sidebar-width: 200px;
+$lb-content-padding: 2rem;
+$lb-grid-gutter: 24px;
+
+/* Font System */
+$lb-font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$lb-font-size-base: 14px;
+
+/* Global Styles */
+:root {
+  --lb-primary: #{$lb-primary};
+  --lb-success: #{$lb-success};
+  --lb-warning: #{$lb-warning};
+  --lb-danger: #{$lb-danger};
+  --lb-info: #{$lb-info};
+
+  --lb-text-primary: #{$lb-text-primary};
+  --lb-text-secondary: #{$lb-text-secondary};
+  --lb-text-muted: #{$lb-text-muted};
+
+  --lb-bg-page: #{$lb-bg-page};
+  --lb-bg-widget: #{$lb-bg-widget};
+  --lb-border: #{$lb-border};
+}
+
+/* Base Layout */
+.lb-page {
+  padding: $lb-content-padding;
+  background: $lb-bg-page;
+  min-height: 100vh;
+  font-family: $lb-font-family;
+  font-size: $lb-font-size-base;
+  font-weight: 400;
+  color: $lb-text-secondary;
+}
+
+/* Page Title */
+.lb-page-title {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: $lb-text-primary;
+
+  small {
+    font-size: 0.875rem;
+    color: $lb-text-muted;
+    margin-left: 0.5rem;
+    font-weight: 400;
+  }
+}
+
+/* Widget/Card */
+.lb-widget {
+  position: relative;
+  margin-bottom: $lb-grid-gutter;
+  padding: 1.25rem;
+  background: $lb-bg-widget;
+  border-radius: $lb-widget-radius;
+  box-shadow: $lb-widget-shadow;
+  border: 1px solid $lb-border-light;
+
+  &.lb-widget-transparent {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  &.lb-widget-full-height {
+    height: 100%;
+  }
+}
+
+.lb-widget-title {
+  margin: 0;
+  padding-right: 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $lb-text-primary;
+}
+
+.lb-widget-body {
+  margin-top: 1rem;
+}
+
+/* Stats Cards */
+.lb-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: $lb-bg-page;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.lb-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  &.lb-stat-icon-success { background: rgba($lb-success, .1); color: $lb-success; }
+  &.lb-stat-icon-warning { background: rgba($lb-warning, .1); color: $lb-warning; }
+  &.lb-stat-icon-danger { background: rgba($lb-danger, .1); color: $lb-danger; }
+  &.lb-stat-icon-info { background: rgba($lb-info, .1); color: $lb-info; }
+  &.lb-stat-icon-primary { background: rgba($lb-primary, .1); color: $lb-primary; }
+}
+
+.lb-stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lb-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $lb-text-primary;
+}
+
+.lb-stat-label {
+  font-size: 0.75rem;
+  color: $lb-text-muted;
+}
+
+/* Number Display */
+.lb-number-lg {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $lb-text-primary;
+}
+
+.lb-number-md {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $lb-text-primary;
+}
+
+/* Progress Bar */
+.lb-progress {
+  height: 6px;
+  background: rgba(0, 0, 0, .06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.lb-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+
+  &.lb-progress-success { background: $lb-success; }
+  &.lb-progress-warning { background: $lb-warning; }
+  &.lb-progress-danger { background: $lb-danger; }
+  &.lb-progress-info { background: $lb-info; }
+}
+
+/* Tables */
+.lb-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: 1rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $lb-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid $lb-border;
+  }
+
+  td {
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $lb-text-secondary;
+    border: none;
+    border-bottom: 1px solid $lb-border-light;
+  }
+
+  tr:hover td {
+    background: $lb-bg-page;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+/* Badges/Status */
+.lb-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &.lb-badge-success { background: rgba($lb-success, .1); color: $lb-success; }
+  &.lb-badge-warning { background: rgba($lb-warning, .1); color: $lb-warning; }
+  &.lb-badge-danger { background: rgba($lb-danger, .1); color: $lb-danger; }
+  &.lb-badge-info { background: rgba($lb-info, .1); color: $lb-info; }
+  &.lb-badge-primary { background: rgba($lb-primary, .1); color: $lb-primary; }
+}
+
+/* Buttons */
+.lb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+  text-decoration: none;
+
+  &.lb-btn-success {
+    background: $lb-success;
+    color: white;
+    &:hover { background: darken($lb-success, 8%); }
+  }
+
+  &.lb-btn-warning {
+    background: $lb-warning;
+    color: white;
+    &:hover { background: darken($lb-warning, 8%); }
+  }
+
+  &.lb-btn-danger {
+    background: rgba($lb-danger, .1);
+    color: $lb-danger;
+    &:hover { background: rgba($lb-danger, .15); }
+  }
+
+  &.lb-btn-info {
+    background: $lb-info;
+    color: white;
+    &:hover { background: darken($lb-info, 8%); }
+  }
+
+  &.lb-btn-primary {
+    background: $lb-primary;
+    color: white;
+    &:hover { background: darken($lb-primary, 8%); }
+  }
+
+  &.lb-btn-ghost {
+    background: transparent;
+    color: $lb-text-muted;
+    border: 1px solid $lb-border;
+
+    &:hover {
+      background: $lb-bg-page;
+      color: $lb-text-primary;
+      border-color: $lb-border;
+    }
+  }
+}
+
+/* Forms */
+.lb-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: $lb-bg-page;
+  border: 1px solid $lb-border;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: $lb-text-primary;
+  font-family: $lb-font-family;
+  transition: all 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $lb-primary;
+    box-shadow: 0 0 0 3px rgba($lb-primary, .1);
+  }
+
+  &::placeholder { color: $lb-text-muted; }
+}
+
+.lb-select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  background: $lb-bg-page;
+  border: 1px solid $lb-border;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: $lb-text-primary;
+  font-family: $lb-font-family;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8aa3' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  transition: all 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $lb-primary;
+    box-shadow: 0 0 0 3px rgba($lb-primary, .1);
+  }
+
+  option {
+    background: $lb-bg-widget;
+    color: $lb-text-primary;
+  }
+}
+
+.lb-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $lb-text-secondary;
+}
+
+/* Grid System */
+.lb-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $lb-grid-gutter;
+}
+
+.lb-col {
+  flex: 1;
+
+  &.lb-col-3 { flex: 0 0 calc(25% - $lb-grid-gutter); }
+  &.lb-col-4 { flex: 0 0 calc(33.333% - $lb-grid-gutter); }
+  &.lb-col-6 { flex: 0 0 calc(50% - $lb-grid-gutter); }
+  &.lb-col-8 { flex: 0 0 calc(66.666% - $lb-grid-gutter); }
+  &.lb-col-12 { flex: 0 0 100%; }
+}
+
+/* Quick Actions Grid */
+.lb-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $lb-grid-gutter;
+}
+
+.lb-action-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: $lb-bg-widget;
+  border-radius: $lb-widget-radius;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid $lb-border-light;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.lb-action-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.lb-action-icon-success { background: rgba($lb-success, .1); color: $lb-success; }
+  &.lb-action-icon-warning { background: rgba($lb-warning, .1); color: $lb-warning; }
+  &.lb-action-icon-info { background: rgba($lb-info, .1); color: $lb-info; }
+  &.lb-action-icon-primary { background: rgba($lb-primary, .1); color: $lb-primary; }
+}
+
+.lb-action-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $lb-text-primary;
+  margin: 0 0 0.25rem;
+}
+
+.lb-action-desc {
+  font-size: 0.75rem;
+  color: $lb-text-muted;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .lb-actions-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .lb-page { padding: 1rem; }
+  .lb-actions-grid { grid-template-columns: 1fr; }
+  .lb-row { flex-direction: column; }
+  .lb-col.lb-col-3, .lb-col.lb-col-4, .lb-col.lb-col-6, .lb-col.lb-col-8 { flex: 0 0 100%; }
+}

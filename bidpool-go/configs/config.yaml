@@ -1,0 +1,33 @@
+server:
+  port: "8080"
+  host: "localhost"
+
+database:
+  path: "data/bidpool.db"
+
+agent:
+  python_service_url: "http://localhost:8001"
+
+dingtalk:
+  groups:
+    - name: "金融能源群"
+      webhook_url: "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN_A"
+      industries:
+        - "金融"
+        - "能源"
+    - name: "其他行业群"
+      webhook_url: "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN_B"
+      industries:
+        - "其他"
+
+# 访问认证配置
+auth:
+  enabled: true         # 默认启用认证
+  username: "admin"     # 用户名
+  password: "bidpool@2026"  # 密码
+
+# 平台凭证配置
+platforms:
+  qianlima:
+    username: "your_qianlima_username"  # 千里马平台用户名
+    password: "your_qianlima_password"  # 千里马平台密码

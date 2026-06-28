@@ -1,0 +1,17 @@
+{
+  "llm": {
+    "api_base": "https://aiapi.chaitin.net/v1",
+    "api_key": "sk-fMwBJtIk37ioOilLmz15gbNCeZEiJ9zd5e1zv2WlGAN28R3P",
+    "model": "gpt-4o",
+    "max_tokens": 4096,
+    "temperature": 0.7
+  },
+  "python_service_port": 8001,
+  "platforms": {
+    "qianlima": {
+      "username": "",
+      "password": ""
+    }
+  },
+  "dingtalk_groups": []
+}

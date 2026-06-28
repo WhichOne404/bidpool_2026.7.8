@@ -1,0 +1,37 @@
+# Large archives / backups
+*.tar.gz
+*.tgz
+*.zip
+BidPool_backup_*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go
+bidpool-go/bidpool-go
+bidpool-go/data/
+bidpool-go/tmp/
+bidpool-go/vendor/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Node
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Config overrides
+configs/config.local.yaml
+configs/config.docker.yaml
+configs/python/*.json

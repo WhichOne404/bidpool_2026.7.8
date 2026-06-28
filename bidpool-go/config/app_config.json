@@ -1,0 +1,53 @@
+{
+  "platforms": {
+    "qianlima": {
+      "username": "chaitin04",
+      "password": "chaitin04"
+    }
+  },
+  "dingtalk_groups": [
+    {
+      "name": "测试",
+      "webhook_url": "https://oapi.dingtalk.com/robot/send?access_token=f72d6767c947bd15e0d36eb22fee6d2985ad5111d0e6120abac41f8b48c8b73f",
+      "industries": [
+        "政府",
+        "医疗",
+        "其他",
+        "教育",
+        "通信",
+        "企业"
+      ]
+    },
+    {
+      "name": "西南二组",
+      "webhook_url": "https://oapi.dingtalk.com/robot/send?access_token=3d451a7b64784776e45be1c3763fe11a658663741ca5901e227d71d65ff0c3de",
+      "industries": [
+        "政府",
+        "医疗",
+        "通信",
+        "教育",
+        "企业",
+        "其他"
+      ]
+    },
+    {
+      "name": "西南三组",
+      "webhook_url": "https://oapi.dingtalk.com/robot/send?access_token=bd03679da394f02bb65b3cc40ec5983c7a7ff5b97515d5eaabcadeffe3f21ba0",
+      "industries": [
+        "政府",
+        "医疗",
+        "教育",
+        "通信",
+        "企业",
+        "其他"
+      ]
+    }
+  ],
+  "llm": {
+    "api_base": "https://aiapi.chaitin.net/v1",
+    "api_key": "sk-f****8R3P",
+    "model": "glm-5",
+    "max_tokens": 0,
+    "temperature": 0
+  }
+}

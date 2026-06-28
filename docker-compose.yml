@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  # ==================== Nginx 前端 ====================
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    container_name: bidpool-nginx
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    depends_on:
+      go-backend:
+        condition: service_healthy
+      python-agent:
+        condition: service_healthy
+    networks:
+      - bidpool-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ==================== Go Backend ====================
+  go-backend:
+    build:
+      context: ./bidpool-go
+      dockerfile: Dockerfile
+    container_name: bidpool-go
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - GIN_MODE=release
+      - CONFIG_PATH=/app/configs/config.docker.yaml
+    volumes:
+      - bidpool-data:/app/data
+      - ./configs:/app/configs:ro
+    networks:
+      - bidpool-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ==================== Python Agent ====================
+  python-agent:
+    build:
+      context: ./bidpool-python
+      dockerfile: Dockerfile
+    container_name: bidpool-python
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - DISPLAY=:99
+      - CONFIG_PATH=/app/runtime/llm_config.json
+      - GO_BACKEND_URL=http://bidpool-go:8080
+      - DOWNLOAD_DIR=/app/downloads
+    volumes:
+      - ./configs/python:/app/runtime:ro
+      - selenium-downloads:/app/downloads
+    networks:
+      - bidpool-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+    # 增加共享内存以支持 Chrome
+    shm_size: '2gb'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# ==================== 网络配置 ====================
+networks:
+  bidpool-net:
+    driver: bridge
+
+# ==================== 数据卷 ====================
+volumes:
+  bidpool-data:
+    driver: local
+  selenium-downloads:
+    driver: local
